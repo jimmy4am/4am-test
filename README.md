@@ -36,6 +36,11 @@ await kv.set(sessionKey, updatedSessionData);
 - Ensure that each page updates only the relevant fields for that step in the user journey
 
 
+### 4. Stop Duplicate API Calls
+- Explain why the session is created and fetched twice
+- Implement a fix so it only does it once
+
+
 ## Evaluation Criteria
 You will be assessed on:
 - Code quality and organization
