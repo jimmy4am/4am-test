@@ -1,9 +1,9 @@
 # 4am Media - Next.js Proficiency Test
 
 ## Objective
-This test aims to evaluate your proficiency with Next.js, API routes, TypeScript, and your ability to work with data. You'll implement a simple web application that tracks user checkout sessions across multiple upsell pages using Vercel KV for data storage. 
+This coding exercise challenges you to complete a simple e-commerce web application. The app offers a primary product with multiple upsells. Your main task is to implement server-side session state to persist the user order details. 
 
-We are here to help. If you get stuck or have questions, please ask.
+You'll work alongside a 4AM engineer, discussing and troubleshooting your implementation. Use this time to showcase your strongest skills.
 
 ## Tasks
 
@@ -24,12 +24,10 @@ We are here to help. If you get stuck or have questions, please ask.
 const sessionKey = `session:${sessionId}`;
 const currentSessionData = await kv.get(sessionKey);
 
-const updatedSessionData = {
-  ...currentSessionData,
-  [field]: value,
-  updatedAt: new Date().toISOString(),
-};
+//build an updatedSessionData object here
 
+
+// update the sessionData in kv
 await kv.set(sessionKey, updatedSessionData);
 ```
 
@@ -37,18 +35,6 @@ await kv.set(sessionKey, updatedSessionData);
 - Utilize your `update-session` API route in the `/upsell1` and `/upsell2` pages
 - Ensure that each page updates only the relevant fields for that step in the user journey
 
-### 4. Test Your Code
-- Ensure that session updates are correctly passed through the application
-- Verify that each update modifies only the intended field(s) in the Vercel KV database
-- Confirm that previously set fields remain unchanged when updating new fields
-
-### 5. Additional Challenges (Time Permitting)
-If you complete the above tasks and have time remaining, tackle one or more of these additional challenges. Discuss which one you would like to tackle before starting.
-
-- Optimize the conversion rate
-- Implement fraud protection for the API routes
-- Define and implement a `sessionData` type
-- Convert client-side rendered pages to server-side rendered (SSR) by removing "use client" directives and adjusting the code accordingly
 
 ## Evaluation Criteria
 You will be assessed on:
