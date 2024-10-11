@@ -1,8 +1,5 @@
 {
   "/page": "app/page.js",
-  "/upsell1/page": "app/upsell1/page.js",
-  "/thank-you/page": "app/thank-you/page.js",
   "/api/start-session/route": "app/api/start-session/route.js",
-  "/upsell2/page": "app/upsell2/page.js",
-  "/api/fetch-session/route": "app/api/fetch-session/route.js"
+  "/thank-you/page": "app/thank-you/page.js"
 }

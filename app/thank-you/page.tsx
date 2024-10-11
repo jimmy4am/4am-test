@@ -49,10 +49,10 @@ const Page = () => {
           </div>
           <div className="flex justify-start">
             4 Bag Bonus:{" "}
-            {(!sessionData.upsell2 && <>Missing Upsell1</>) || (
+            {(!sessionData.upsell1 && <>Missing Upsell1</>) || (
               <>
                 {sessionData.upsell1 === true && <>$10 - Accepted</>}{" "}
-                {sessionData.upsell2 === false || <>Declined</>}
+                {sessionData.upsell1 === false || <>Declined</>}
               </>
             )}
           </div>
@@ -60,7 +60,7 @@ const Page = () => {
             Expedited Processing:{" "}
             {(!sessionData.upsell2 && <>Missing Upsell2</>) || (
               <>
-                {sessionData.upsell1 === true && <>$5 - Accepted</>}{" "}
+                {sessionData.upsell2 === true && <>$5 - Accepted</>}{" "}
                 {sessionData.upsell2 === false || <>Declined</>}
               </>
             )}{" "}
