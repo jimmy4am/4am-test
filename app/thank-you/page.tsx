@@ -16,11 +16,9 @@ const Page = () => {
         },
         body: JSON.stringify({ sessionId }),
       });
-
       if (!response.ok) {
         throw new Error("Failed to start session");
       }
-
       const data = await response.json();
       setSessionData(data);
       console.log("Sesh Data - ", data);
@@ -30,41 +28,38 @@ const Page = () => {
     }
   }, [sessionId]);
 
+  const getUpsellStatus = (upsell: boolean | undefined) => {
+    if (upsell === undefined) return "Missing";
+    return upsell ? "Accepted" : "Declined";
+  };
+
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1>Your Order is Complete</h1>
-        <Image
-          src="/images/product-4.webp"
-          width={250}
-          height={250}
-          alt="Double Offer"
-        />
-        <div className="flex flex-col items-center justify-center mt-4 space-y-4">
-          <div className="flex justify-start">
-            url: {sessionData.url || <>Missing Url</>}
-          </div>
-          <div className="flex justify-start">
-            sessionId: {sessionId || <>Missing Session ID</>}
-          </div>
-          <div className="flex justify-start">
-            4 Bag Bonus:{" "}
-            {(!sessionData.upsell1 && <>Missing Upsell1</>) || (
-              <>
-                {sessionData.upsell1 === true && <>$10 - Accepted</>}{" "}
-                {sessionData.upsell1 === false || <>Declined</>}
-              </>
-            )}
-          </div>
-          <div className="flex justify-start">
-            Expedited Processing:{" "}
-            {(!sessionData.upsell2 && <>Missing Upsell2</>) || (
-              <>
-                {sessionData.upsell2 === true && <>$5 - Accepted</>}{" "}
-                {sessionData.upsell2 === false || <>Declined</>}
-              </>
-            )}{" "}
-          </div>
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <h1>Your Order is Complete</h1>
+      <Image
+        src="/images/product-4.webp"
+        width={250}
+        height={250}
+        alt="Double Offer"
+      />
+      <div className="flex flex-col items-center justify-center mt-4 space-y-4">
+        <div className="flex justify-start">
+          url: {sessionData.url || "Missing Url"}
+        </div>
+        <div className="flex justify-start">
+          sessionId: {sessionId || "Missing Session ID"}
+        </div>
+        <div className="flex justify-start">
+          4 Bag Bonus:{" "}
+          {getUpsellStatus(sessionData.upsell1) === "Missing"
+            ? "Missing Upsell1"
+            : `$10 - ${getUpsellStatus(sessionData.upsell1)}`}
+        </div>
+        <div className="flex justify-start">
+          Expedited Processing:{" "}
+          {getUpsellStatus(sessionData.upsell2) === "Missing"
+            ? "Missing Upsell2"
+            : `$5 - ${getUpsellStatus(sessionData.upsell2)}`}
         </div>
       </div>
     </div>
