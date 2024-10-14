@@ -14,7 +14,6 @@ const Page = () => {
   useEffect(() => {
     const startSession = async () => {
       const url = "Empty URL"; // capture the full url to start session
-    
 
       try {
         const response = await fetch("/api/start-session", {
@@ -30,9 +29,9 @@ const Page = () => {
         }
 
         const data = await response.json();
-        // save the session ID to the context 
-        setSessionId(data.sessionId)
-        
+        // save the session ID to the context
+        setSessionId(data.sessionId);
+
         console.log("Session started:", data.sessionId);
       } catch (error) {
         console.error("Error starting session:", error);
@@ -45,7 +44,6 @@ const Page = () => {
   }, [sessionId, setSessionId]);
 
   const handleClick = () => {
-    //capture the url string and pass it to /api/start-session, then save session ID to sessionContext
     router.push("/upsell1");
   };
 
