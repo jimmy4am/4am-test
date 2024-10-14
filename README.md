@@ -11,12 +11,19 @@ You'll work alongside a 4AM engineer, discussing and troubleshooting your implem
 - Locate the `useEffect` hook in the `/` (home) page
 - Set the URL parameter in the `start-session` call with the full url including all UTM parameters
 
-### 2. Create an Update Session API Route
-- Implement a new `update-session` API route
+
+### 2. Implement Session Updates
+- Call an `update-session` API route in the `/upsell1` and `/upsell2` pages
+- Pass a `field` value of `upsell1` or `upsell2`
+- Pass a `value` boolean of `true`/`false` based on user selection
+- Pass the `sessionId`
+
+### 3. Create an Update Session API Route
+- Implement the `update-session` API route
 - This route should:
-  - Take three parameters: `sessionId`, `field`, and `value`
+  - Take three parameters you provided: `sessionId`, `field`, and `value`
   - Use the `sessionId` provided by `start-session` to retrieve the current `sessionData` from the Vercel KV database
-  - Update only the specified `field` with the new `value`, leaving other fields unchanged
+  - Update only the specified `field` with the new `value`, **leaving other fields unchanged**
   - Store the updated `sessionData` back in the Vercel KV database
 - Example of how to update a specific field in a session:
 
@@ -30,10 +37,6 @@ const currentSessionData = await kv.get(sessionKey);
 // update the sessionData in kv
 await kv.set(sessionKey, updatedSessionData);
 ```
-
-### 3. Implement Session Updates
-- Utilize your `update-session` API route in the `/upsell1` and `/upsell2` pages
-- Ensure that each page updates only the relevant fields for that step in the user journey
 
 
 ### 4. Stop Duplicate API Calls
